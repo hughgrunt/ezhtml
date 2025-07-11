@@ -10,12 +10,12 @@ class ezhtml {
     return e;
   }
   static build = class {
-    e;
+    element;
     constructor(tag) {
-      this.e = document.createElement(tag);
+      this.element = document.createElement(tag);
     }
     withProp(prop, value) {
-      this.e[prop] = value;
+      this.element[prop] = value;
       return this;
     }
     withText(value) {
@@ -25,11 +25,11 @@ class ezhtml {
       return this.withProp("innerHTML", value);
     }
     withChild(child) {
-      this.e.appendChild(child);
+      this.element.appendChild(child);
       return this;
     }
     e() {
-      return this.e;
+      return this.element;
     }
   };
   static element = class {
@@ -59,7 +59,7 @@ class ezhtml {
       this.e().appendChild(child);
     }
     clear() {
-      this.inner("");
+      this.clear("");
     }
   };
 }
