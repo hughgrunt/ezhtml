@@ -58,5 +58,8 @@ class ezhtml {
     add_child(child) {
       this.e().appendChild(child);
     }
+    clear() {
+      this.inner("");
+    }
   };
 }
