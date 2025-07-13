@@ -160,6 +160,11 @@ class ezhtml {
         ),
       );
     }
+    set_data(data) {
+      this.data = data;
+      this.search();
+      this.draw_data();
+    }
     draw_data() {
       this.tbody.innerHTML = "";
       let total_pages = Math.ceil(this.filtered_data.length / this.pagesize);
@@ -190,32 +195,28 @@ class ezhtml {
               let input = document.createElement("input");
               input.type = "text";
               input.value = data[column.key];
-              input.onblur = input.onkeydown = async (e) => {
-                if (
-                  e.type === "blur" ||
-                  (e.type === "keydown" && e.key === "Enter")
-                ) {
-                  let new_value = e.target.value;
-                  let render_value = value;
-                  if (new_value !== value) {
-                    let on_edit_method = column.on_edit || this.on_edit;
-                    let success = true;
-                    if (on_edit_method) {
-                      success = await on_edit_method(
-                        data,
-                        column.key,
-                        new_value,
-                      );
-                    }
-                    if (success) {
-                      data[column.key] = new_value;
-                      render_value = new_value;
-                    }
-                  }
-                  td.innerHTML = column.render
-                    ? column.render(render_value, data)
-                    : render_value;
+              input.onkeydown = (e) => {
+                if (e.key === "Enter") {
+                  input.blur();
                 }
+              };
+              input.onblur = async (e) => {
+                let new_value = e.target.value;
+                let render_value = value;
+                if (new_value !== value) {
+                  let on_edit_method = column.on_edit || this.on_edit;
+                  let success = true;
+                  if (on_edit_method) {
+                    success = await on_edit_method(data, column.key, new_value);
+                  }
+                  if (success) {
+                    data[column.key] = new_value;
+                    render_value = new_value;
+                  }
+                }
+                td.innerHTML = column.render
+                  ? column.render(render_value, data)
+                  : render_value;
               };
               td.appendChild(input);
               input.focus();
