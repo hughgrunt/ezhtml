@@ -232,7 +232,7 @@ class ezhtml {
             btn.innerHTML = action.name;
             btn.onclick = (e) => {
               e.stopPropagation();
-              action.method(data, tr, btn);
+              action.method(data, tr, btn, this);
             };
             td_actions.appendChild(btn);
           });
