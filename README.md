@@ -48,9 +48,9 @@
   1. withColumn(String label, String datakey, custom_render_function (value,data)=>{}, boolean isEditable, on_edit_function (data, key, newvalue)=>{});
       only if on_edit_function returns true it will apply the change to the cell
   2. withRowOnClick(function (e, rowdata) =>{ //handle rowdata and/or rowelement ... }
-    3. withAction(String name, method (rowdata, tr_element, btn_element)=>{// handle on action button}, props)
+  3. withAction(String name, method (rowdata, tr_element, btn_element)=>{// handle on action button}, props)
       if actions > 0, a column with the action buttons will get added
-    4. withPageSize(int value)
+   4. withPageSize(int value)
       set page size meaning results per page
 
 
