@@ -184,33 +184,37 @@ class ezhtml {
             td.textContent = value;
           }
           if (column.editable) {
-            td.ondblclick = () => {
+            td.ondblclick = async () => {
               if (td.querySelector("input")) return;
               td.innerHTML = "";
               let input = document.createElement("input");
               input.type = "text";
               input.value = data[column.key];
-              input.onblur = input.onkeydown = (e) => {
+              input.onblur = input.onkeydown = async (e) => {
                 if (
                   e.type === "blur" ||
                   (e.type === "keydown" && e.key === "Enter")
                 ) {
                   let new_value = e.target.value;
+                  let render_value = value;
                   if (new_value !== value) {
                     let on_edit_method = column.on_edit || this.on_edit;
                     let success = true;
                     if (on_edit_method) {
-                      success = on_edit_method(data, column.key, new_value);
+                      success = await on_edit_method(
+                        data,
+                        column.key,
+                        new_value,
+                      );
                     }
-                    let render_value = value;
                     if (success) {
                       data[column.key] = new_value;
                       render_value = new_value;
                     }
-                    td.innerHTML = column.render
-                      ? column.render(render_value, data)
-                      : render_value;
                   }
+                  td.innerHTML = column.render
+                    ? column.render(render_value, data)
+                    : render_value;
                 }
               };
               td.appendChild(input);
