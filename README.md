@@ -1,11 +1,11 @@
 ### ezhtml - Simple class for handling some standard DOM actions i kinda always need
 
 1. #### Element-Creation
-   1. ezhtml.create(tagname, props={}, ...children;
+   1. ### ezhtml.create(tagname, props={}, ...children;
       Example:
       let div = ezhtml.create("div", {}, ezhtml.create("button", {innerHTML:"i am a button"}));
-   2. ezhtml.build("div").withText("hallo").withProp("someprop", "somevalue").e();
-      ### only e() returns the element
+   2. ### ezhtml.build("div").withText("hallo").withProp("someprop", "somevalue").e();
+      #### only e() returns the element
       current methods:
         1. constructor(String element_tag)
         2. withProp(String prop, String value)
