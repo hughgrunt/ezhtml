@@ -59,7 +59,7 @@ class ezhtml {
       this.e().appendChild(child);
     }
     clear() {
-      this.clear("");
+      this.inner("");
     }
   };
   static datatable = class {
