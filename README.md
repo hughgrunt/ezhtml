@@ -36,11 +36,11 @@
   Example initialization:
   let table = new ezhtml.datatable(data)
               .withColumn(<br>
-                "Titel", // heading of the column
-                "title", // data key of the column represented in ata
-                (value, data)=>`custom render <b>${value}`, //custom render function
-                true, // if you can edit the column
-                (data, key, newvalue)=>{console.log(`${key} has ben edited of entry ${JSON.stringify(data) with new value ${newvalue});return true;} // handle editing data
+                "Titel", // heading of the column<br>
+                "title", // data key of the column represented in ata<br>
+                (value, data)=>"custom render "+ value, //custom render function<br>
+                true, // if you can edit the column<br>
+                (data, key, newvalue)=>{console.log(`${key} has ben edited of entry ${JSON.stringify(data) with new value ${newvalue});return true;} // handle editing data<br>
               );
   current methods:
     1. withColumn(String label, String datakey, custom_render_function (value,data)=>{}, boolean isEditable, on_edit_function (data, key, newvalue)=>{});
