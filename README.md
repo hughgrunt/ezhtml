@@ -35,7 +35,7 @@
 3. #### Data-Table
   Example initialization:
   let table = new ezhtml.datatable(data)
-              .withColumn(
+              .withColumn(<br>
                 "Titel", // heading of the column
                 "title", // data key of the column represented in ata
                 (value, data)=>`custom render <b>${value}`, //custom render function
