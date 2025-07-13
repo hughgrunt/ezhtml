@@ -40,12 +40,12 @@
                 "title",  data key of the column represented in ata<br>
                 (value, data)=>"custom render "+ value, custom render function<br>
                 true, if you can edit the column<br>
-                (data, key, newvalue)=>{console.log(`${key} has ben edited of entry ${JSON.stringify(data) with new value ${newvalue});return true;} handle editing data<br>
+                (data, key, newvalue, datatable_instance)=>{console.log(`${key} has ben edited of entry ${JSON.stringify(data) with new value ${newvalue});return true;} handle editing data<br>
               );
 
 
   current methods:
-  1. withColumn(String label, String datakey, custom_render_function (value,data)=>{}, boolean isEditable, on_edit_function (data, key, newvalue)=>{});
+  1. withColumn(String label, String datakey, custom_render_function (value,data)=>{}, boolean isEditable, on_edit_function (data, key, newvalue, datatable_instance)=>{});
       only if on_edit_function returns true it will apply the change to the cell
   2. withRowOnClick(function (e, rowdata) =>{ //handle rowdata and/or rowelement ... }
   3. withAction(String name, method (rowdata, tr_element, btn_element, datatable_instance)=>{// handle on action button}, props)
