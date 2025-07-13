@@ -42,6 +42,8 @@
                 true, if you can edit the column<br>
                 (data, key, newvalue)=>{console.log(`${key} has ben edited of entry ${JSON.stringify(data) with new value ${newvalue});return true;} handle editing data<br>
               );
+
+
   current methods:
     1. withColumn(String label, String datakey, custom_render_function (value,data)=>{}, boolean isEditable, on_edit_function (data, key, newvalue)=>{});
       only if on_edit_function returns true it will apply the change to the cell
