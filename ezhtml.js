@@ -207,7 +207,12 @@ class ezhtml {
                   let on_edit_method = column.on_edit || this.on_edit;
                   let success = true;
                   if (on_edit_method) {
-                    success = await on_edit_method(data, column.key, new_value);
+                    success = await on_edit_method(
+                      data,
+                      column.key,
+                      new_value,
+                      this,
+                    );
                   }
                   if (success) {
                     data[column.key] = new_value;
