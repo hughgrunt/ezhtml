@@ -154,10 +154,21 @@ class ezhtml {
       }
       this.filtered_data = this.data.filter((d) =>
         Object.values(this.searches).every(
-          (search) =>
-            d[search.key] &&
-            d[search.key].toLowerCase().includes(search.value.toLowerCase()),
-        ),
+                    (search) => {
+                        if (!d[search.key]) {
+                            return false;
+                        }
+                        if (Array.isArray(d[search.key])) {
+                            return d[search.key].some(array_value => {
+                                return array_value.toLowerCase().includes(search.value.toLowerCase());
+                            });
+                        }
+                        if (typeof d[search.key] === "string") {
+                            return d[search.key].toLowerCase().includes(search.value.toLowerCase());
+                        }
+                        return false;
+                    }
+                ),
       );
     }
     set_data(data) {
